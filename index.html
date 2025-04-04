@@ -3,12 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>IP Location Finder</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer type="module"> </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>IP Location Finder</h1>
+            <p>Discover geographical information based on IP addresses</p>
+        </header>
 
+        <main>
+            <div class="search-container">
+                <input type="text" id="ip-input" placeholder="Enter an IP address or leave empty for your current IP">
+                <button id="search-btn">Search</button>
+                <button id="current-location-btn">Get My Location</button>
+            </div>
+
+            <div class="result-card hidden" id="result-card">
+                <div class="card-header">
+                    <h2>Location Information</h2>
+                    <span id="ip-display">IP: 0.0.0.0</span>
+                </div>
+                <div class="card-body">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Country</span>
+                            <span class="info-value" id="country">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Region</span>
+                            <span class="info-value" id="region">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">State/Province</span>
+                            <span class="info-value" id="state">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">City</span>
+                            <span class="info-value" id="city">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Postal Code</span>
+                            <span class="info-value" id="postal">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Latitude</span>
+                            <span class="info-value" id="latitude">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Longitude</span>
+                            <span class="info-value" id="longitude">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Time Zone</span>
+                            <span class="info-value" id="timezone">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-container">
+                <div class="history-header">
+                    <h2>Search History</h2>
+                    <button id="clear-history-btn">Clear History</button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!--item s here -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>IP data provided by IP Geolocation API</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
