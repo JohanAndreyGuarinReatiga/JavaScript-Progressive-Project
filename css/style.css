@@ -60,3 +60,32 @@ header p {
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
+
+
+button {
+    padding: 0.8rem 1.5rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#current-location-btn {
+    background-color: #38b2ac;
+}
+
+#current-location-btn:hover {
+    background-color: #319795;
+}
