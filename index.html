@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP Location Finder</title>
+    <link rel="shortcut icon" href="storage/img/ip-address.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <script type="module" src="js/main.js"></script>
@@ -14,14 +15,12 @@
             <h1>IP Location Finder</h1>
             <p>Discover geographical information based on IP addresses</p>
         </header>
-
         <main>
             <div class="search-container">
                 <input type="text" id="ip-input" placeholder="Enter an IP address or leave empty for your current IP">
                 <button id="search-btn">Search</button>
                 <button id="current-location-btn">Get My Location</button>
             </div>
-
             <div class="result-card hidden" id="result-card">
                 <div class="card-header">
                     <h2>Location Information</h2>
@@ -64,7 +63,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="history-container">
                 <div class="history-header">
                     <h2>Search History</h2>
@@ -75,12 +73,9 @@
                 </div>
             </div>
         </main>
-
         <footer>
             <p>IP data provided by IP Geolocation API</p>
         </footer>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
