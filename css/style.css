@@ -163,3 +163,28 @@
   .card-body {
     padding: 1.5rem;
   }
+
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .info-label {
+    font-size: 0.875rem;
+    color: #718096;
+    font-weight: 500;
+  }
+  
+  .info-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
