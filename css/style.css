@@ -188,3 +188,34 @@
     font-weight: 600;
     color: #2d3748;
   }
+ /* History styles */
+ .history-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: slideUp 0.8s ease-in-out;
+}
+
+.history-header {
+  background-color: #f7fafc;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #edf2f7;
+  h2 {
+      font-size: 1.25rem;
+      color: #4a5568;
+    }
+}
+#clear-history-btn {
+  background-color: #c87878;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+#clear-history-btn:hover {
+  background-color: #c62727;
+}
