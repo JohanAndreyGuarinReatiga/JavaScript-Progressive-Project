@@ -137,3 +137,29 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
   }
+  
+  .card-header {
+    background-color: #ebf8ff;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+        color: #3d4856;
+        font-size: 1.5rem;
+      }
+  }
+  
+  
+  #ip-display {
+    background-color: #bee3f8;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #2e3948;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
