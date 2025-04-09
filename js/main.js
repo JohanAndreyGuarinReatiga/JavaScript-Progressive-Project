@@ -32,3 +32,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 })
+
+// ip search feature
+
+async function handleSearch() {
+  const ipAddress = ipInput.ariaValueMax.trim()
+  try{
+    setLoadingState(true)
+
+    const locationData = await 
+    fetchIPData(ipAddress)
+
+    displayResults(locationData)
+
+    saveToHistory(locationData)
+  }catch(error){
+    console.error("error fetching ip data", error)
+    alert("failed to fetch data. Try again")
+  }finally{
+    setLoadingState(false)
+  }
+}
+
+// get  current location
+// this is cleaning input field to inidicate thjat were gettin current ip
+function getCurrentLocation(){
+  ipInput.value = ""
+  handleSearch()
+}
+
+// fetch 
+async function fetchIPData(ipAddress) {
+  try{
+    let url = `${API_URL}?apiKey=${KEY}`
+    if (ipAddress){
+      url += `&ipAddress=${ipAddress}`
+    }
+
+    const response = await fetch(url)
+
+    if(!response.ok){
+      const errorData = await response.json()
+      throw new Error(errorData.message || `api request failed, status: ${response.status}`)
+    }
+
+    const data = await response.json()
+    
+  return {
+      ip: data.ip,
+      country: data.location.country || "-",
+      region: data.location.region || "-",
+      state: data.location.region || "-",
+      city: data.location.city || "-",
+      postal: data.location.postalCode || "-",
+      latitude: data.location.lat?.toString() || "-",
+      longitude: data.location.lng?.toString() || "-",
+      timezone: data.location.timezone || "-",
+      isp: data.isp || "-",
+      timestamp: new Date().toISOString(),
+    }
+  } catch (error) {
+    console.error("Error in fetching:", error)
+    throw error
+  }
+}
