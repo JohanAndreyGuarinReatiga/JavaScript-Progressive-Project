@@ -143,3 +143,42 @@ function saveToHistory(data) {
   // Update
   loadSearchHistory()
 }
+// load and show history
+function loadSearchHistory() {
+  const history = JSON.parse(localStorage.getItem("ipSearchHistory")) || []
+
+  // clear
+  historyList.innerHTML = ""
+
+  if (history.length === 0) {
+    historyList.innerHTML = '<div class="history-item"><p>No search history yet</p></div>'
+    return
+  }
+
+  // Add each item 
+  history.forEach((item, index) => {
+    const historyItem = document.createElement("div")
+    historyItem.className = "history-item"
+    historyItem.dataset.ip = item.ip
+
+    //  date
+    const date = new Date(item.timestamp)
+    const formattedDate = date.toLocaleDateString() + " " + date.toLocaleTimeString()
+
+    historyItem.innerHTML = `
+            <div>
+                <span class="history-ip">${item.ip}</span>
+                <div class="history-details">${item.city}, ${item.country}</div>
+            </div>
+            <span class="history-date">${formattedDate}</span>
+        `
+    historyItem.addEventListener("click", () => {
+      ipInput.value = item.ip
+      handleSearch()
+    })
+
+    historyItem.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.1}s both`
+
+    historyList.appendChild(historyItem)
+  })
+}
