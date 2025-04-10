@@ -118,3 +118,28 @@ function displayResults(data) {
   resultCard.offsetHeight 
   resultCard.style.animation = "fadeIn 0.8s ease-in-out"
 }
+
+
+function saveToHistory(data) {
+  // Get existing history from localStorage
+  let history = JSON.parse(localStorage.getItem("ipSearchHistory")) || []
+
+  // Addat the beginning
+  history.unshift({
+    ip: data.ip,
+    country: data.country,
+    city: data.city,
+    timestamp: data.timestamp || new Date().toISOString(),
+  })
+
+  // limit 10 items
+  if (history.length > 10) {
+    history = history.slice(0, 10)
+  }
+
+  // Save
+  localStorage.setItem("ipSearchHistory", JSON.stringify(history))
+
+  // Update
+  loadSearchHistory()
+}
