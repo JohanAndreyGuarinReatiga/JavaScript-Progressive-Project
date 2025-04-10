@@ -30,28 +30,48 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch()
     }
   })
+  ipInput.addEventListener("input", () => {
+    ipInput.value = ipInput.value
+      .replace(/[^\d.]/g, "")    // Solo números y puntos
+      .replace(/\.{2,}/g, ".")   // No permite dos puntos seguidos
+  });
 })
 
 // ip search feature
 
 async function handleSearch() {
-  const ipAddress = ipInput.value.trim()
-  try{
-    setLoadingState(true)
+  const ipAddress = ipInput.value.trim();
 
-    const locationData = await 
-    fetchIPData(ipAddress)
+  if (ipAddress && !isValidIP(ipAddress)) {
+    alert("Type only valid ip numbers");
+    return;
+  }
+  try {
+    setLoadingState(true);
 
-    displayResults(locationData)
+    const locationData = await fetchIPData(ipAddress);
 
-    saveToHistory(locationData)
-  }catch(error){
-    console.error("error fetching ip data", error)
-    alert("failed to fetch data. Try again")
-  }finally{
-    setLoadingState(false)
+    displayResults(locationData);
+    saveToHistory(locationData);
+  } catch (error) {
+    console.error("Error fetching IP data:", error);
+    alert("Error requesting data, try again");
+  } finally {
+    setLoadingState(false);
   }
 }
+
+function isValidIP(ip) {
+  const segments = ip.split(".");
+  if (segments.length !== 4) return false;
+
+  return segments.every(seg => {
+    const num = Number(seg);
+    return seg !== "" && !isNaN(num) && num >= 0 && num <= 255;
+  });
+}
+
+
 
 // get  current location
 // this is cleaning input field to inidicate thjat were gettin current ip

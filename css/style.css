@@ -78,7 +78,7 @@
   
   #ip-input {
     flex: 1;
-    min-width: 250px;
+    width: 250px;
     padding: 0.8rem 1rem;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
@@ -105,7 +105,6 @@
   
   button:hover {
     background-color: #82878c;
-
     transform: translateY(-2px);
   }
   
@@ -199,7 +198,7 @@
 
 .history-header {
   background-color: #f7fafc;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -261,68 +260,164 @@
 }
 
 
-  /* Foote */
-  footer {
-    text-align: center;
-    margin-top: 2rem;
-    color: #e2e8f0;
-    font-size: 0.875rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+/* Foote */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
 
-  .hidden {
-    display: none;
+  header h1 {
+    font-size: 2rem;
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+
+  .search-container {
+    flex-direction: column;
   }
-  
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  #ip-input {
+    width: 100%;
   }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-    }
-  
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    .search-container {
-      flex-direction: column;
-    }
-  
-    #ip-input {
-      width: 100%;
-    }
-  
-    .info-grid {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-  
-    .card-header {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
+
+  .info-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
   }
-  
-  
+
+  .card-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 170px) and (max-height: 200px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1rem;
+  }
+
+  header p {
+    font-size: 0.7rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-self: center;
+  }
+
+  #ip-input {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    height: 1.8rem;
+  }
+
+  button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #current-location-btn {
+    padding: 0.3rem 0.5rem;
+    height: 1.8rem;
+  }
+
+  .result-card,
+  .history-container {
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  #ip-display{
+    font-size: 0.8rem;
+    align-self: center;
+  }
+
+  .card-header h2,
+  .history-header h2 {
+    font-size: 0.8rem;
+    
+  }
+  #clear-history-btn{
+    font-size: 0.6rem;
+  }
+  .card-body,
+  .history-list {
+    padding: 1rem;
+    font-size: 0.8rem;
+
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+  }
+
+  .info-value {
+    font-size: 0.8rem;
+  }
+
+  .info-label,
+  .history-date,
+  .history-details {
+    font-size: 0.7rem;
+  }
+
+  .history-item {
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  footer {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Quitar flechitas del input número */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
