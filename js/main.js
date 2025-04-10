@@ -11,7 +11,6 @@ const countryElement = document.getElementById("country")
 const regionElement = document.getElementById("region")
 const stateElement = document.getElementById("state")
 const cityElement = document.getElementById("city")
-const postalElement = document.getElementById("postal")
 const latitudeElement = document.getElementById("latitude")
 const longitudeElement = document.getElementById("longitude")
 const timezoneElement = document.getElementById("timezone")
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ip search feature
 
 async function handleSearch() {
-  const ipAddress = ipInput.ariaValueMax.trim()
+  const ipAddress = ipInput.value.trim()
   try{
     setLoadingState(true)
 
@@ -84,7 +83,6 @@ async function fetchIPData(ipAddress) {
       region: data.location.region || "-",
       state: data.location.region || "-",
       city: data.location.city || "-",
-      postal: data.location.postalCode || "-",
       latitude: data.location.lat?.toString() || "-",
       longitude: data.location.lng?.toString() || "-",
       timezone: data.location.timezone || "-",
@@ -107,7 +105,6 @@ function displayResults(data) {
   regionElement.textContent = data.region || "-"
   stateElement.textContent = data.state || "-"
   cityElement.textContent = data.city || "-"
-  postalElement.textContent = data.postal || "-"
   latitudeElement.textContent = data.latitude || "-"
   longitudeElement.textContent = data.longitude || "-"
   timezoneElement.textContent = data.timezone || "-"
@@ -181,4 +178,25 @@ function loadSearchHistory() {
 
     historyList.appendChild(historyItem)
   })
+}
+
+//  clear history
+function clearSearchHistory() {
+  if (confirm("Are you sure you want to clear your search history?")) {
+    localStorage.removeItem("ipSearchHistory")
+    loadSearchHistory()
+  }
+}
+
+//  loading state
+function setLoadingState(isLoading) {
+  if (isLoading) {
+    searchBtn.disabled = true
+    currentLocationBtn.disabled = true
+    searchBtn.textContent = "Searching..."
+  } else {
+    searchBtn.disabled = false
+    currentLocationBtn.disabled = false
+    searchBtn.textContent = "Search"
+  }
 }
