@@ -96,3 +96,25 @@ async function fetchIPData(ipAddress) {
     throw error
   }
 }
+
+// show results in the page
+function displayResults(data) {
+  
+  ipDisplay.textContent = `IP: ${data.ip}`
+
+  // Update all information fields
+  countryElement.textContent = data.country || "-"
+  regionElement.textContent = data.region || "-"
+  stateElement.textContent = data.state || "-"
+  cityElement.textContent = data.city || "-"
+  postalElement.textContent = data.postal || "-"
+  latitudeElement.textContent = data.latitude || "-"
+  longitudeElement.textContent = data.longitude || "-"
+  timezoneElement.textContent = data.timezone || "-"
+
+  // Show the result 
+  resultCard.classList.remove("hidden")
+  resultCard.style.animation = "none"
+  resultCard.offsetHeight 
+  resultCard.style.animation = "fadeIn 0.8s ease-in-out"
+}
